@@ -1,0 +1,26 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.card {
+  @apply bg-[var(--card)] border border-[var(--border)] rounded-lg shadow-lg p-6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply text-[var(--primary)] font-bold;
+}
+
+p {
+  @apply text-[var(--foreground)];
+}
+
+input, textarea, select {
+  @apply border border-[var(--border)] rounded-md p-2 bg-[var(--input)] text-[var(--foreground)] w-full;
+}
+
+button {
+  @apply bg-[var(--primary)] text-[var(--primary-foreground)] px-4 py-2 rounded-md hover:bg-blue-700;
+}
