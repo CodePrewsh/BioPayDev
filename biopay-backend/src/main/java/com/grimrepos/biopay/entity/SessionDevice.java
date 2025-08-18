@@ -8,27 +8,25 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Entity
-@Table(name = "fingerprint_templates")
+@Table(name = "session_devices")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class FingerprintTemplate {
+public class SessionDevice {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "template_id",updatable = false,nullable = false)
-    private UUID templateId;
+    @Column(name = "device_id",updatable = false,nullable = false)
+    private UUID deviceId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "session_id")
+    private RegistrationSession registrationSession;
 
-    @Lob
-    @Column(name = "template_data",columnDefinition = "BLOB")
-    private byte[] templateData;
-
-    private Float qualityScore;
-    private Instant createdAt;
+    private String deviceType;
+    private String osVersion;
+    private String appVersion;
+    private Instant registeredAt;
 }
